@@ -1,0 +1,43 @@
+image: node:10.15.3
+
+clone:
+ depth: full
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Build and Test
+          caches:
+            - node
+          script:
+            - npm install
+            - DB=$DB_TEST npm run test
+      - step:
+          name: Code linting
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run lint
+  branches:
+    master:
+      - parallel:
+        - step:
+            name: Build and Test
+            caches:
+              - node
+            script:
+              - npm install
+              - DB=$DB_TEST npm run test
+        - step:
+            name: Deploy to Production
+            trigger: manual
+            deployment: Production
+            script:
+              - git archive --format=tar.gz master -o $ZIP_FILE
+              - pipe: atlassian/heroku-deploy:1.2.1
+                variables:
+                  HEROKU_API_KEY: $HEROKU_API_KEY
+                  HEROKU_APP_NAME: $HEROKU_APP_NAME
+                  ZIP_FILE: $ZIP_FILE

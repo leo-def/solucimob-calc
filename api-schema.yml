@@ -1,0 +1,63 @@
+openapi: 3.0.0
+
+info:
+  version: 1.0.0
+  title: Solução Imobiliária Calc
+  description: Serviço de cálculos para a solução imobiliária
+
+servers:
+  - url: http://{host}:{port}/
+    description: Server de produção
+    variables:
+      host:
+        default: localhost
+        description: Endereço do servidor de produção
+      port:
+        default: '3001'
+  - url: http://localhost:3001/
+    description: Server local para desenvolvimento
+
+paths:
+  /calc:
+    post:
+      summary: Cálculo do custo total por metro quadrado.
+      description: Retorna o custo total por metro quadrado, dado a quantidade de metros informados.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalcRequest'
+            example:
+              m2: 100
+      responses:
+        '200':    # status code
+          description: Valor total da area calculado
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/CalcResponse'
+
+components:
+  schemas:
+    CalcRequest:
+      description: Dados para o cálculo
+      required:
+        - m2
+      properties:
+        m2:
+          description: Valor do metro quadrado
+          type: number
+    CalcResponse:
+      description: Quantidade de metros quadrados
+      required:
+        - valor
+      properties:
+        m2:
+          description: Quantidade de metros quadrados
+          type: number
+        valor:
+          description: Valor total da soma de todos os metros quadrados
+          type: number
+        valorM2:
+          description: Valor do metro quadrado
+          type: number
