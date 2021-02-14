@@ -1,0 +1,45 @@
+language: nodejs
+
+##Versão instalação
+node_js: 12
+
+install:
+  ## Instalação bibliotecas 
+  - npm install
+
+script:
+  ## Testar aplicação 
+  - env DB=$DB_TEST npm run test
+  ## Validar padrão do código
+  - npm run lint
+
+deploy:
+  ## Deploy no heroku
+  - provider: heroku
+    api_key: $HEROKU_TOKEN
+    on:
+      branch: master
+    ## Nome da release por padrão
+    #app: my-app-123
+  ## Deploy de release automatizado
+  #- provider: releases
+  #  api_key: $GITHUB_TOKEN
+  #  file_glob: true
+  #  file: "solucimob-*.tgz"
+  #  skip_cleanup: true
+  #  on:
+  #    branch: master
+  ## Deploy da aplicação no npm, para pacotes
+  #- provider: npm
+  #  skip_cleanup: true
+  #  email: "youremail@example.com"
+  #  api_key: $NPM_TOKEN
+  #  on:
+  #    branch: master
+  ## Deploy da documentação JsDoc no Github pages
+  # - provider: pages
+  #   skip_cleanup: true
+  #   local_dir: docs/
+  #   github_token: $GITHUB_TOKEN
+  #   on:
+  #    branch: master
