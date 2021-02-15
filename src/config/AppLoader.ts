@@ -103,6 +103,15 @@ export const loadApp = async () => {
   app.use(methodOverride())
 
   /**
+   * Carrega funções comuns no app para serem usadas
+   *   pela aplicação
+   *
+   * @memberof loadApp
+   *
+   */
+  ResponseHandler.use(app)
+
+  /**
    * Realiza o parser do header de cookies da requisição
    *   populando req.cookies e armazena o ID da sessão
    *
@@ -145,15 +154,6 @@ export const loadApp = async () => {
    */
   const validator = new OpenApiValidator(swaggerDocument)
   app.use(validator.match())
-
-  /**
-   * Carrega funções comuns no app para serem usadas
-   *   pela aplicação
-   *
-   * @memberof loadApp
-   *
-   */
-  ResponseHandler.use(app)
 
   /**
    * Roteamento da requisição para os serviços
