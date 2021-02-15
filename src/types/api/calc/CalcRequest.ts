@@ -1,4 +1,4 @@
-import { DTO } from "../../../abstracts/DTO";
+import { DTO } from '../../../abstracts/DTO'
 
 /**
  * Requisição da consulta da calculo
@@ -8,17 +8,17 @@ import { DTO } from "../../../abstracts/DTO";
 export class CalcRequest extends DTO {
   m2: number;
 
-  constructor(defaultValues?: any) {
-    super();
+  constructor (defaultValues?: any) {
+    super()
     if (defaultValues) {
-      this.load(defaultValues, this);
+      this.load(defaultValues, this)
     }
   }
 
-  toDTO() {
-    const { m2 } = this;
+  toDTO () {
+    const { m2 } = this
     return {
-      m2,
-    };
+      m2
+    }
   }
 }

@@ -1,7 +1,6 @@
 import express from 'express'
 import service from '../../services/CalcService'
 
-
 /**
  * Mapeamento de rotas para autenticação
  * @namespace
