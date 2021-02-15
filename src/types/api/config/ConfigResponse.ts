@@ -1,19 +1,19 @@
-import { DTO } from "../../../abstracts/DTO";
+import { DTO } from '../../../abstracts/DTO'
 
 export class ConfigResponse extends DTO {
   valorM2: number;
 
-  constructor(defaultValues?: any) {
-    super();
+  constructor (defaultValues?: any) {
+    super()
     if (defaultValues) {
-      this.load(defaultValues, this);
+      this.load(defaultValues, this)
     }
   }
 
-  toDTO() {
-    const { valorM2 } = this;
+  toDTO () {
+    const { valorM2 } = this
     return {
-      valorM2,
-    };
+      valorM2
+    }
   }
 }

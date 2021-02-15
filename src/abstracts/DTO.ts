@@ -81,22 +81,22 @@ export class DTO {
     return mongoose.Types.ObjectId.isValid(val)
   }
 
-  constructor(defaultValues?: any) {
-    if(defaultValues){
+  constructor (defaultValues?: any) {
+    if (defaultValues) {
       this.load(defaultValues)
     }
   }
 
-  load(defaultValues?: any, obj = this) {
+  load (defaultValues?: any, obj = this) {
     if (defaultValues) {
-      if(typeof defaultValues === 'string'){
+      if (typeof defaultValues === 'string') {
         defaultValues = JSON.parse(defaultValues)
       }
-      if(defaultValues.toObject && typeof defaultValues.toObject === 'function') {
+      if (defaultValues.toObject && typeof defaultValues.toObject === 'function') {
         defaultValues = defaultValues.toObject()
       }
       for (const [key, value] of Object.entries(defaultValues)) {
-          obj[key] = value;
+        obj[key] = value
       }
     }
   }

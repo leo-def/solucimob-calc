@@ -2,11 +2,11 @@ import express from 'express'
 import path from 'path'
 import swaggerUi from 'swagger-ui-express'
 import YAML from 'yamljs'
-const swaggerDocument = YAML.load( path.resolve(process.cwd(), 'api-schema.yml'))
 /**
  * Rotas de autenticação
  */
 import configRouters from './api/CalcRouter'
+const swaggerDocument = YAML.load(path.resolve(process.cwd(), 'api-schema.yml'))
 
 /**
  * Mapeamento de rotas do sistema
@@ -15,7 +15,6 @@ import configRouters from './api/CalcRouter'
  */
 export const routes = () => {
   const router = express.Router({ mergeParams: true })
-
 
   router.use(
     '/api-docs',
@@ -31,7 +30,6 @@ export const routes = () => {
     '/calc',
     configRouters()
   )
-
 
   return router
 }
