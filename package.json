@@ -12,7 +12,7 @@
     "dev:localdb": "npx npm-run-all -p localdb dev",
     "debug": "npx ts-node-dev  --inspect --respawn --ignore-watch node_modules --no-notify --transpile-only src/Server.ts",
     "debug:localdb": "npx npm-run-all -p localdb debug",
-    "test": "npx jest --no-cache --passWithNoTests",
+    "test": "npx jest --no-cache --passWithNoTests --detectOpenHandles --forceExit",
     "build": "npx babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "build:ts": "npx tsc",
     "docs": "npx jsdoc -c jsdoc.json",
