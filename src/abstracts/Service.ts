@@ -12,7 +12,6 @@ const auth = (_req: any, _res: any, _next: any, _service: any) => {
  * @subcategory Serviço
  */
 export class Service {
-
   auth (req: any, res: any, next: any): any {
     return auth(req, res, next, this)
   }

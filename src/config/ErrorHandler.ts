@@ -1,19 +1,19 @@
 // #region LoadFunctions
 
-import { AuthError } from "../errors/AuthError"
+import { AuthError } from '../errors/AuthError'
 
 /**
  * Cria retorno com erro
  * @memberof ErrorHandler
  */
 export const errorHandlerFunc = (err, req, res, next) => {
-    if (err) {
-      if (err instanceof AuthError || err.forbiddenResponse) {
-        req.forbiddenResponse(req, res, err)
-      } else {
-        req.handleError(req, res, err)
-      }
+  if (err) {
+    if (err instanceof AuthError || err.forbiddenResponse) {
+      req.forbiddenResponse(req, res, err)
+    } else {
+      req.handleError(req, res, err)
     }
+  }
 }
 
 // #endregion LoadFunctions

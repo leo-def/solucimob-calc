@@ -3,13 +3,16 @@ language: nodejs
 ##Versão instalação
 node_js: 12
 
+env:
+  - DB_TEST=$DB_TEST
+
 install:
   ## Instalação bibliotecas 
   - npm install
 
 script:
-  ## Testar aplicação 
-  - env DB=$DB_TEST npm run test
+  ## Testar aplicação
+  - npm run test
   ## Validar padrão do código
   - npm run lint
 

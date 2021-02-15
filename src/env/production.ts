@@ -1,4 +1,4 @@
-import { ServiceEnum } from "../enums/Service.enum";
+import { ServiceEnum } from '../enums/Service.enum'
 
 /**
  * Ambiente de produção
