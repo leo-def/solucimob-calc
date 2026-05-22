@@ -23,6 +23,19 @@ export const routes = () => {
   )
 
   /**
+   * Health and telemetry check route
+   */
+  router.get('/health', (req, res) => {
+    res.json({
+      status: 'UP',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      memory: process.memoryUsage(),
+      cpu: process.cpuUsage()
+    })
+  })
+
+  /**
    * Mapeamento de rotas de configuração
    * @memberof apiRoutes
    */
